@@ -4,8 +4,12 @@ let radiusSlider;
 let eraserButton;
 let erasing;
 let backgroundColor = "rgb(255, 255, 255)";
+let room;
 
 function setup() {
+    room = window.location.pathname.split("/").filter(str => str.length > 0)[0];
+    console.log("Room name is " + room);
+
     createCanvas(500, 500);
     background(color(backgroundColor));
 
@@ -22,6 +26,10 @@ function setup() {
     eraserButton.mousePressed(() => {erasing = !erasing});
 
     socket = io.connect("http://localhost:3000");
+
+    socket.on("connect", () => {
+        socket.emit("join", { room });
+    })
 
     socket.on("drawing", data => {
         data.drawing.forEach(point => {
