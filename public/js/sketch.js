@@ -22,6 +22,15 @@ function setup() {
     eraserButton.mousePressed(() => {erasing = !erasing});
 
     socket = io.connect("http://localhost:3000");
+
+    socket.on("drawing", data => {
+        data.drawing.forEach(point => {
+            noStroke();
+            fill(color(point.color));
+            circle(point.x, point.y, point.radius);
+        });
+    });
+
     socket.on("mouse", data => {
         noStroke();
         fill(color(data.color));
