@@ -5,10 +5,11 @@ let eraserButton;
 let erasing;
 let backgroundColor = "rgb(255, 255, 255)";
 let room;
+let hostName;
 
 function setup() {
     room = window.location.pathname.split("/").filter(str => str.length > 0)[0];
-    console.log("Room name is " + room);
+    hostName = window.location.protocol + "//" + window.location.host;
 
     let canvas = createCanvas(500, 500);
     canvas.parent("#sketch");
@@ -26,7 +27,7 @@ function setup() {
     eraserButton.parent("#eraserDiv");
     eraserButton.mousePressed(() => {erasing = !erasing});
 
-    socket = io.connect("http://localhost:3000");
+    socket = io.connect(hostName);
 
     socket.on("connect", () => {
         socket.emit("join", { room });
