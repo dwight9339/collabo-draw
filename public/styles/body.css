@@ -16,6 +16,17 @@
     font-weight: bold;
 }
 
+#eraserDiv > button {
+    background-color: red;
+    border-radius: 4px;
+    border-style: none;
+    font-size: large;
+    color: white;
+    margin-top: 20px;
+    width: 80px;
+    height: 40px;
+}
+
 canvas {
     border: 5px solid black;
 }
