@@ -12,6 +12,7 @@ const server = app.listen(PORT, () => {
 });
 const io = socket(server);
 let drawings = {};
+let rooms = {};
 
 const symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 function createRoomName() {
@@ -45,6 +46,13 @@ io.sockets.on("connection", socket => {
         if (!drawings[room]){
             drawings[room] = [];
         }
+
+        if (!rooms[room]){
+            rooms[room] = 1;
+        } else {
+            rooms[room] += 1;
+        }
+
         io.to(socket.id).emit("drawing", {drawing: drawings[room]});
 
         socket.join(room);
@@ -57,6 +65,11 @@ io.sockets.on("connection", socket => {
 
     socket.on("disconnect", () => {
         console.log(socket.id + " disconnected");
+        rooms[room] -= 1;
+        if (rooms[room] === 0){
+            drawings[room] = [];
+        }
+
         socket.leave(room);
     });
 });
