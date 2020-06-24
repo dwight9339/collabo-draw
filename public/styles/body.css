@@ -1,0 +1,21 @@
+.sketchDiv {
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#sketch {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    justify-content: center;
+}
+
+#optionsMenu {
+    font-size: large;
+    font-weight: bold;
+}
+
+canvas {
+    border: 5px solid black;
+}

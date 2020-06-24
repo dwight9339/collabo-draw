@@ -10,7 +10,8 @@ function setup() {
     room = window.location.pathname.split("/").filter(str => str.length > 0)[0];
     console.log("Room name is " + room);
 
-    createCanvas(500, 500);
+    let canvas = createCanvas(500, 500);
+    canvas.parent("#sketch");
     background(color(backgroundColor));
 
     colorPicker = createColorPicker("#000000");
