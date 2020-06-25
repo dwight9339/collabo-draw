@@ -1,26 +1,20 @@
 .sketchDiv {
     margin-top: 25px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-}
-
-#roomLink {
-    font-size: medium;
-    font-weight: 100;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #sketch {
-    grid-column-start: 1;
-    grid-column-end: 4;
     display: flex;
     justify-content: center;
+    flex-grow: 2;
+
 }
 
 #options {
-    grid-column-start: 4;
-    grid-column-end: 6;
     font-size: large;
     font-weight: bold;
+    flex-grow: 1;
 }
 
 #optionsPanel {
@@ -28,6 +22,11 @@
     border-radius: 4px;
     padding: 30px;
     width: 75%;
+}
+
+#roomLink {
+    font-size: medium;
+    font-weight: 100;
 }
 
 #eraserDiv > button {
@@ -43,4 +42,17 @@
 
 canvas {
     border: 5px solid black;
+    border-radius: 4px;
 }
+
+/* Mobile styles */
+@media only screen and (max-width: 870px) {
+    #options {
+      display: flex;
+      justify-content: center;
+    }
+
+    #optionsPanel {
+        margin-top: 20px;
+    }
+  }
