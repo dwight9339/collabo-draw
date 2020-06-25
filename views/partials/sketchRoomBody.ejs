@@ -1,16 +1,23 @@
 <div class="sketchDiv">
     <div id="sketch"></div> 
-    <div id="optionsMenu">
-        <div id="roomNameDiv">
-            You are in room: <%= roomName %>
-        </div>
-        <div id="colorPickerDiv">
-            <h5>Color:</h5>
-        </div>
-        <div id="radiusSliderDiv">
-            <h5>Brush Size:</h5>
-        </div>
-        <div id="eraserDiv">
+    <div id="options">
+        <div id="optionsPanel">
+            <div id="roomNameDiv">
+                Your room link: <br><span id="roomLink"></span>
+            </div>
+            <div id="colorPickerDiv">
+                <h5>Color:</h5>
+            </div>
+            <div id="radiusSliderDiv">
+                <h5>Brush Size:</h5>
+            </div>
+            <div id="eraserDiv">
+            </div>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(() => {
+        $("#roomLink").text(window.location);
+    })
+</script>
