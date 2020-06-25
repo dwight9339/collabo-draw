@@ -62,6 +62,20 @@ function mouseDragged() {
     circle(mouseX, mouseY, radiusSlider.value());
 }
 
+function touchMoved() {
+    let data = {
+        x: mouseX,
+        y: mouseY,
+        color: erasing ? backgroundColor : colorPicker.color().toString(),
+        radius: radiusSlider.value()
+    }
+    socket.emit("mouse", data);
+
+    noStroke();
+    fill(erasing ? color(backgroundColor) : colorPicker.color());
+    circle(mouseX, mouseY, radiusSlider.value());
+}
+
 function draw() {
     if (erasing) {
         eraserButton.style("filter", "brightness(50%)");
