@@ -2,13 +2,13 @@
     margin-top: 25px;
     display: flex;
     flex-wrap: wrap;
+    height: 100%;
 }
 
 #sketch {
     display: flex;
     justify-content: center;
     flex-grow: 2;
-
 }
 
 #options {
@@ -22,6 +22,8 @@
     border-radius: 4px;
     padding: 30px;
     width: 75%;
+    display: flex;
+    flex-direction: column;
 }
 
 #roomLink {

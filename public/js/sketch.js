@@ -4,12 +4,10 @@ let radiusSlider;
 let eraserButton;
 let erasing;
 let backgroundColor = "rgb(255, 255, 255)";
-let room;
-let hostName;
 
 function setup() {
-    room = window.location.pathname.split("/").filter(str => str.length > 0)[0];
-    hostName = window.location.protocol + "//" + window.location.host;
+    let room = window.location.pathname.split("/").filter(str => str.length > 0)[0];
+    let hostName = window.location.protocol + "//" + window.location.host;
 
     let canvas = createCanvas(500, 500);
     canvas.parent("#sketch");
