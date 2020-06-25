@@ -43,6 +43,7 @@
 canvas {
     border: 5px solid black;
     border-radius: 4px;
+    touch-action: none;
 }
 
 /* Mobile styles */
