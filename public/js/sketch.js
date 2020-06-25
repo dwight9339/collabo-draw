@@ -65,7 +65,9 @@ function mouseDragged() {
 function draw() {
     if (erasing) {
         eraserButton.style("filter", "brightness(50%)");
+        cursor("images/eraser.cur");
     } else {
         eraserButton.style("filter", "brightness(100%)");
+        cursor("images/pencil.cur");
     }
 }
