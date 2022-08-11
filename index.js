@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const socket = require("socket.io");
 const path = require("path");
+const { randomBytes } = require("crypto");
 
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
@@ -14,19 +15,16 @@ const io = socket(server);
 let drawings = {};
 let rooms = {};
 
-const symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-function createRoomName() {
-    let name = "";
-
-    for (let i = 0; i < 10; i++){
-        name += symbols[Math.floor(Math.random() * symbols.length)];
-    }
-
-    return name;
+const createRoomName = () => {
+  return randomBytes(6)
+    .toString("base64")
+    .replace("+", "_")
+    .replace("/", "-");
 }
 
 app.get("/", (req, res) => {
     let newRoomName = createRoomName();
+    console.log(`New room name: ${newRoomName}`);
 
     return res.redirect("/" + newRoomName);
 });
