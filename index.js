@@ -12,8 +12,8 @@ const server = app.listen(PORT, () => {
     console.log("Listening on port " + PORT);
 });
 const io = socket(server);
-let drawings = {};
-let rooms = {};
+const drawings = {};
+const rooms = {};
 
 const createRoomName = () => {
   return randomBytes(6)
